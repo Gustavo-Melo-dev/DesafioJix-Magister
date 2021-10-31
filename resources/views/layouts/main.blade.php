@@ -14,19 +14,25 @@
 <body>
     <div class="page bg-light inline-block">
         <header class="color">
-            <nav class="navbar navbar-light bg-dark justify-content-lg-between py-3">
-                <div class="container-fluid">
-                  <a class="navbar-brand text-light" href="/dashboard">
+            <nav class="navbar navbar-light bg-dark justify-content-lg-between py-3 d-flex">
+                <div class="container-fluid d-flex">
+                  <a class="navbar-brand text-light" href="/main">
                     <img src="/img/magister.png" alt="Logo Magister" width="35" height="30" class="d-inline-block align-text-top">
                     Magister
                   </a>
-                  <div class="navigations mx-2">
-                    <a href="/dashboard" class="text-light mx-3">
+                  <div class="navigations mx-2 d-flex">
+                    <a href="/main" class="text-light mx-2">
                         Documentos
                     </a>
-                    <a href="/document/create" class="text-light">
+                    <a href="/document/create" class="text-light mx-3">
                         Enviar Documento
                     </a>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <a href="/logout" class="text-light" onclick="event.preventDefault();this.closest('form').submit();">
+                            Logout
+                        </a>
+                    </form>
                   </div>
                 </div>
               </nav>
@@ -36,11 +42,6 @@
                 @yield('content')
             </div>
         </main>
-        {{-- <footer>
-            <div class="footer d-flex bg-dark justify-content-center font-weight-bold mt-4 py-2 text-light">
-                <span class="">Magister - 2021</span>
-            </div>
-        </footer> --}}
     </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 @section('title', 'Enviar Documento')
 
 @section('content')
+    @auth
     <div class="form-group col-md-12 py-5">
         <form action="/document" method="POST" enctype="multipart/form-data">
             @csrf
@@ -34,4 +35,5 @@
             </div>
         </form>
     </div>
+    @endauth
 @endsection

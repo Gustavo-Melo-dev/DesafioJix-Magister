@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('/dashboard', [DocumentController::class, 'index']);
-Route::get('/dashboard', [DocumentController::class, 'sum']);
+Route::get('/main', [DocumentController::class, 'index']);
+Route::get('/main', [DocumentController::class, 'sum']);
 Route::get('/document/create', [DocumentController::class, 'create']);
 Route::post('/document', [DocumentController::class, 'store']);
+Route::get('/logout', [DocumentController::class, 'logout']);

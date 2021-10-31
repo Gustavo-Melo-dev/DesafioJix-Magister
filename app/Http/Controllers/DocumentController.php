@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
-use Faker\Extension\Extension;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use PDF;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
@@ -15,7 +12,7 @@ class DocumentController extends Controller
     public function index(){
         $documents = Document::all();
 
-        return view('/dashboard', compact('documents'));
+        return view('/main', compact('documents'));
     }
 
     public function create(){
@@ -38,7 +35,7 @@ class DocumentController extends Controller
 
         $document->save();
 
-        return redirect('/dashboard')->with('msg', 'Evento criado com sucesso!');
+        return redirect('/main')->with('msg', 'Evento criado com sucesso!');
     }
 
     public function sum(){
@@ -49,6 +46,16 @@ class DocumentController extends Controller
                 $sum = $doc->qty_hours + $sum;
             }
         }
-        return view('/dashboard', compact('documents','sum'));
+        return view('/main', compact('documents','sum'));
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

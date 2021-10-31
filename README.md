@@ -3,4 +3,7 @@ This project aims to send course certificates for extracurricular hours and chec
 
 
 # Route intro
-/dashboard
+/login
+
+# Route logout (After logging in, use the "/login" route again)
+/login
